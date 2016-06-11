@@ -37,4 +37,31 @@
     <%= f.submit %>
   </p>
 <% end %>
+<h2>Comment list:</h2>
+<% @product.comments.each do |c| %>
+  <p>
+    <strong>User_name:</strong>
+    <%= c.user_name %>
+  </p>
+ 
+  <p>
+    <strong>Text:</strong>
+    <%= c.text %>
+  </p>
+<% end %>
+<h2>Comment add form</h2>
+<h2>Add a comment:</h2>
+<%= form_for([@product, @product.comments.build]) do |f| %>
+  <p>
+    <%= f.label :user_name %><br>
+    <%= f.text_field :user_name %>
+  </p>
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 <%= link_to 'Back to channel', channel_path(@channel) %>
