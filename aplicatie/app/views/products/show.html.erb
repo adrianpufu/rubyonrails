@@ -1,25 +1,40 @@
-<p>
-  <strong>Name:</strong>
-  <%= @channel.name %>
-</p>
+<strong>Product Name:</strong>
+    <%= @product.name %>
+  </p>
  
-<h2>Add a product:</h2>
-<%= form_for([@channel, @channel.products.build]) do |f| %>
   <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <strong>Description:</strong>
+    <%= @product.description %>
   </p>
   <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <strong>Active:</strong>
+    <%= @product.active %>
+  </p>
+  <h2>Variants List</h2>
+<% @product.variants.each do |v| %>
+  <p>
+    <strong>Quantity:</strong>
+    <%= v.quantity %>
+  </p>
+ 
+  <p>
+    <strong>Price:</strong>
+    <%= v.price %>
+  </p>
+<% end %>
+<h2>Variant add form</h2>
+<h2>Add a variant:</h2>
+<%= form_for([@product, @product.variants.build]) do |f| %>
+  <p>
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %>
   </p>
   <p>
-    <%= f.label :active %><br>
-    <%= f.text_field :active %>
+    <%= f.label :price %><br>
+    <%= f.text_area :price %>
   </p>
   <p>
     <%= f.submit %>
   </p>
 <% end %>
- 
-<%= link_to 'Back', channels_path %>
+<%= link_to 'Back to channel', channel_path(@channel) %>

@@ -1,5 +1,6 @@
+
 <p>
-  <strong>Name:</strong>
+  <h1>Channel Name:</h1>
   <%= @channel.name %>
 </p>
  <h2>Products</h2>
@@ -17,6 +18,7 @@
     <strong>Active:</strong>
     <%= p.active %>
   </p>
+  <p><%= link_to 'Show product', channel_product_path(@channel,p) %></p>
 <% end %>
 <h2>Add a product:</h2>
 <%= form_for([@channel, @channel.products.build]) do |f| %>

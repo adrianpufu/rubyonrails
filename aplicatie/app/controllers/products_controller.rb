@@ -1,4 +1,10 @@
 class ProductsController < ApplicationController
+    def show
+    
+    @product = Product.find(params[:id])
+    @channel = Channel.find(params[:id])
+  
+    end
     def create
     @channel = Channel.find(params[:channel_id])
     @product = @channel.products.create(product_params)
