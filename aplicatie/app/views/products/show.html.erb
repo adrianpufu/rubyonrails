@@ -2,22 +2,7 @@
   <strong>Name:</strong>
   <%= @channel.name %>
 </p>
- <h2>Products</h2>
-<% @channel.products.each do |p| %>
-  <p>
-    <strong>Name:</strong>
-    <%= p.name %>
-  </p>
  
-  <p>
-    <strong>Description:</strong>
-    <%= p.description %>
-  </p>
-  <p>
-    <strong>Active:</strong>
-    <%= p.active %>
-  </p>
-<% end %>
 <h2>Add a product:</h2>
 <%= form_for([@channel, @channel.products.build]) do |f| %>
   <p>
