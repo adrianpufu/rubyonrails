@@ -7,7 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p class="navbar-text pull-right">
+<% if buyer_signed_in? %>
+  Logged in as <strong><%= current_buyer.email %></strong>.
+  <%= link_to 'Edit profile', edit_buyer_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_buyer_session_path, method: :delete, :class => 'navbar-link'  %> |
+  <%= link_to 'Home', channel_path(1), :class => 'navbar-link' %> |
+  <%= link_to 'Electronics', channel_path(2), :class => 'navbar-link' %> |
+  <%= link_to 'Fashion', channel_path(3), :class => 'navbar-link' %>
+<% else %>
+  <%= link_to "Sign up", new_buyer_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_buyer_session_path, :class => 'navbar-link'  %> |
+  <%= link_to 'Home', channel_path(1) %> |
+  <%= link_to 'Electronics', channel_path(2) %> |
+  <%= link_to 'Fashion', channel_path(3) %> |
+<% end %>
+</p>
+<h2>Search Form</h2>
 
+<%= form_tag(products_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Products by name" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 <%= yield %>
 
 </body>

@@ -9,4 +9,8 @@ class CreateProducts < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+  def self.search(search)
+  where("name LIKE ?", "%#{search}%") 
+  where("content LIKE ?", "%#{search}%")
+  end
 end
