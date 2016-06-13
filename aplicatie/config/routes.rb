@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :buyers
   get 'channels/new'
   resources :channels do
     resources :products
