@@ -1,15 +1,9 @@
 class ProductsController < ApplicationController
 
-  def index
-  @products = Product.all
-  if params[:name]
-    @products = Product.search(params[:name]).order("created_at DESC")
-  else
-    @products = Product.all.order('created_at DESC')
-  end
-  end
+    def index
+    @products = Product.search(params[:search])
+    end
     def show
-    
     @product = Product.find(params[:id])
     @channel = Channel.find(params[:id])
   

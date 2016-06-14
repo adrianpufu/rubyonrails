@@ -1,6 +1,16 @@
+<div class="search" style="float:right">
+
+<% form_tag products_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search products by name", :name => nil %>
+  </p>
+</div>
+<% end %>
+<h2>Search Form results</h2>
 <% @products.each do |p| %>
     <tr>
       <td><%= p.name %></td>
       <td><%= link_to 'Show', product_path(p) %></td>
     </tr>
-<% end %>
+  <% end %>

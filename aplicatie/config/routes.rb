@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'orders/create'
+
+  get 'orders/update'
+
+  get 'orders/destroy'
+
   devise_for :buyers
   get 'channels/new'
   resources :channels do
@@ -10,7 +16,7 @@ Rails.application.routes.draw do
   resources :products do
   resources :comments
 end
-    
+    resources :orders
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

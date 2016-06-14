@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
 </head>
 <body>
 <p class="navbar-text pull-right">
@@ -23,13 +24,14 @@
   <%= link_to 'Fashion', channel_path(3) %> |
 <% end %>
 </p>
+<div class="search" style="float:right">
 <h2>Search Form</h2>
 
 <%= form_tag(products_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search Products by name" %>
 <%= submit_tag "Search" %>
 <% end %>
-
+</div>
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
